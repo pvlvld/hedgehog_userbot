@@ -1,0 +1,26 @@
+{
+  "name": "hedgehog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx ts-node -r dotenv/config src/index.ts",
+    "build": "echo EMPTY SCRIPT",
+    "start": "echo EMPTY SCRIPT"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "none",
+  "dependencies": {
+    "input": "^1.0.1",
+    "prompts": "^2.4.2",
+    "telegram": "^2.19.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.6",
+    "@types/prompts": "^2.4.6",
+    "dotenv": "^16.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
