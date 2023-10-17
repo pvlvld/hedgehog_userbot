@@ -4,7 +4,6 @@ import input from 'input';
 import { StringSession } from 'telegram/sessions';
 
 const { API_ID, API_HASH, PHONE, SESSION } = process.env;
-console.log(API_ID, API_HASH, PHONE, SESSION);
 
 async function getClient() {
   if (!Number(API_ID) || !API_HASH || !PHONE) {
