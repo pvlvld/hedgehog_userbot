@@ -1,6 +1,3 @@
-// import { TelegramClient } from 'telegram';
-// import { EntityLike, MessageIDLike } from 'telegram/define';
-// import { Api } from 'telegram/tl';
 import { sleep } from 'telegram/Helpers';
 import createCommands, { ICommands } from './helpers/createCommands';
 
@@ -14,5 +11,3 @@ async function startFarming(commands: ICommands) {
 }
 
 startFarming(commands);
-
-// heal();
