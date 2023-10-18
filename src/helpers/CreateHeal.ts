@@ -1,7 +1,8 @@
+import { type MyClient } from './getClients';
 import getHouseMessage from './getHouseMessage';
 
-async function CreateHeal() {
-  const healMessage = await getHouseMessage();
+async function CreateHeal(client: MyClient) {
+  const healMessage = await getHouseMessage(client);
 
   return async () => {
     if (healMessage.buttons)
