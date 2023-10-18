@@ -2,8 +2,12 @@ import { type MyClient } from './getClients';
 import sendMessage from './sendMessage';
 import { sleep } from 'telegram/Helpers';
 import getLastMessage from './getLastMessage';
+import { Api } from 'telegram';
 
-async function getHouseMessage(client: MyClient, attempt = 1) {
+async function getHouseMessage(
+  client: MyClient,
+  attempt = 1
+): Promise<Api.Message> {
   console.info(`Getting house message. Attempt: ${attempt}...`);
 
   await sendMessage(client, '/house');
