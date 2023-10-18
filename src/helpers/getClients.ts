@@ -11,7 +11,8 @@ export type MyClient = TelegramClient & {
 const { API_ID, API_HASH, SESSIONS } = process.env;
 
 async function getClients() {
-  if (!Number(API_ID) || !API_HASH || !SESSIONS) throw new Error('Bad .env');
+  if (!Number(API_ID) || !API_HASH || SESSIONS === undefined)
+    throw new Error('Bad .env');
 
   const clients: MyClient[] = [];
   const sessionsArray = SESSIONS.split(',');
