@@ -1,10 +1,11 @@
+import { type MyClient } from './getClients';
 import RAW_COMMANDS_ACTIONS from '../consts/rawCommandsActions';
 import CreateHeal from './CreateHeal';
 import sendMessage from './sendMessage';
 
 // TODO: parse cooldown ??? reply.match(RegExp(/\d+/, 'g'))
 
-type ICallFn = typeof call;
+type ICallFn = Awaited<ReturnType<typeof CreateCall>>;
 type IRepeater = typeof repeater;
 
 export type ICommands = Record<
@@ -16,22 +17,16 @@ export type ICommands = Record<
   }
 >;
 
-const heal = CreateHeal();
-
-const call = async (command: string) => {
-  await sendMessage(`/${command}`);
-  (await heal)();
-  return true;
-};
-
 const repeater = async (cb: ICallFn, cooldown: number) => {
   return setInterval(cb, (cooldown + 1) * 60 * 1000); // minutes + 1m to milliseconds
 };
 
-function createCommands() {
+async function createCommands(client: MyClient) {
   const commands: ICommands = {} as any;
 
   // const _intervals: Partial<Record<ICommands, { id: number, stop: () => boolean}>> = {} as any;
+
+  const call = await CreateCall(client);
 
   RAW_COMMANDS_ACTIONS.forEach((c) => {
     const [command, cooldown] = c;
