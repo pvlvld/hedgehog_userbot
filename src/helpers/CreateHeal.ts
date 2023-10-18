@@ -8,7 +8,7 @@ async function CreateHeal(client: MyClient) {
     if (healMessage.buttons)
       try {
         await healMessage.click(healMessage.buttons[0][1]);
-        console.info('Healed!');
+        console.info(`${client.name} healed!`);
         return true;
       } catch (error) {
         console.error('Unable to heal.');
