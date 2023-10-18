@@ -1,14 +1,11 @@
 import { MyClient } from './getClients';
 
-const TARGET_BOT_ID = process.env.TARGET_BOT_ID;
+const hedgehogBot = 6074059719;
 
 async function getBotEntity(client: MyClient) {
-  if (!Number(TARGET_BOT_ID))
-    throw new Error('Bad TARGET_BOT_ID. Check .env file.');
-
   await client.getDialogs();
 
-  const botEntity = client.getInputEntity(Number(TARGET_BOT_ID));
+  const botEntity = client.getInputEntity(hedgehogBot);
 
   return botEntity;
 }
