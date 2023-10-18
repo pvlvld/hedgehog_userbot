@@ -1,9 +1,9 @@
-import client from './client';
+import { type MyClient } from './getClients';
 import getBotEntity from './getBotEntity';
 
-async function getLastMessage() {
+async function getLastMessage(client: MyClient) {
   return (
-    await (await client).getMessages(await getBotEntity(), { limit: 1 })
+    await client.getMessages(await getBotEntity(client), { limit: 1 })
   )[0];
 }
 
