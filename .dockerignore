@@ -1,0 +1,5 @@
+.gitignore
+data.csv
+node_modules
+.vscode
+.env*
