@@ -16,7 +16,7 @@ async function sendMessage(client: MyClient, message: string) {
 
   try {
     await client.sendMessage(botEntity, { message });
-    console.info(`${client.name} used /${message}`);
+    console.info(`${client.name} used ${message}`);
     return true;
   } catch (error) {
     console.error(error);
