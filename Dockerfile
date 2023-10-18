@@ -18,17 +18,17 @@ FROM base AS build
 
 # Install packages needed to build node modules
 RUN apt-get update -qq && \
-    apt-get install -y build-essential pkg-config python-is-python3
+    apt-get install -y build-essential pkg-config python-is-python3 node-typescript
 
 # Install node modules
 COPY --link package-lock.json package.json ./
-RUN npm ci --include=dev
+RUN npm i
 
 # Copy application code
 COPY --link . .
 
 # Build application
-RUN npm run build
+RUN tsc
 
 # Remove development dependencies
 RUN npm prune --omit=dev
@@ -42,4 +42,5 @@ COPY --from=build /app /app
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 80 443
+RUN npm i
 CMD [ "npm", "run", "start" ]
