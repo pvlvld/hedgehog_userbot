@@ -47,4 +47,14 @@ function createCommands() {
   return commands;
 }
 
+async function CreateCall(client: MyClient) {
+  const heal = await CreateHeal(client);
+
+  return async (command: string) => {
+    await sendMessage(client, `/${command}`);
+    await heal();
+    return true;
+  };
+}
+
 export default createCommands;
