@@ -24,8 +24,6 @@ const repeater = async (cb: ICallFn, cooldown: number) => {
 async function createCommands(client: MyClient) {
   const commands: ICommands = {} as any;
 
-  // const _intervals: Partial<Record<ICommands, { id: number, stop: () => boolean}>> = {} as any;
-
   const call = await CreateCall(client);
 
   RAW_COMMANDS_ACTIONS.forEach((c) => {
@@ -34,7 +32,6 @@ async function createCommands(client: MyClient) {
     commands[command] = {
       call_once: async () => await call(command),
       call_repeated: () => repeater(() => call(command), cooldown),
-      // TODO: stop. call_repeated -> intervalID -> clearInterval() ???
       cooldown,
     };
   });
