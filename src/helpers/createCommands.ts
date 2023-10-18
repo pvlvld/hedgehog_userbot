@@ -1,5 +1,5 @@
 import RAW_COMMANDS_ACTIONS from '../consts/rawCommandsActions';
-import heal from './heal';
+import CreateHeal from './CreateHeal';
 import sendMessage from './sendMessage';
 
 // TODO: parse cooldown ??? reply.match(RegExp(/\d+/, 'g'))
@@ -16,9 +16,11 @@ export type ICommands = Record<
   }
 >;
 
+const heal = CreateHeal();
+
 const call = async (command: string) => {
   await sendMessage(`/${command}`);
-  await heal();
+  (await heal)();
   return true;
 };
 
