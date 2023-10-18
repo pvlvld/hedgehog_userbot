@@ -1,13 +1,9 @@
-import { sleep } from 'telegram/Helpers';
-import createCommands, { ICommands } from './helpers/createCommands';
+import CreateHedgehogsArmy from './helpers/CreateHedgehogsArmy';
 
-const commands = createCommands();
+async function runner() {
+  const hedgehogArmy = await CreateHedgehogsArmy();
 
-async function startFarming(commands: ICommands) {
-  for (const [, command] of Object.entries(commands)) {
-    command.call_repeated();
-    await sleep(3333); // 3s sleep
-  }
+  hedgehogArmy.startFarming();
 }
 
-startFarming(commands);
+runner();
