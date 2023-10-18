@@ -1,6 +1,5 @@
 import getClients from './getClients';
 import createCommands, { type ICommands } from './createCommands';
-import { sleep } from 'telegram/Helpers';
 import startFarming from './startFarming';
 
 type IHedgehogsArmy = {
