@@ -1,21 +1,23 @@
-import client from './client';
+import { type MyClient } from './getClients';
+import { sleep } from 'telegram/Helpers';
 import getBotEntity from './getBotEntity';
-import sleep from './sleep';
 
 const SENDING_COOLDOWN = 3333;
 
 let isCooldown = false;
 
-async function sendMessage(message: string) {
-  const botEntity = await getBotEntity();
+async function sendMessage(client: MyClient, message: string) {
+  const botEntity = await getBotEntity(client);
 
   if (isCooldown) {
     await sleep(SENDING_COOLDOWN);
-    return sendMessage(message);
+    return sendMessage(client, message);
   }
 
   try {
-    return Boolean(await (await client).sendMessage(botEntity, { message }));
+    await client.sendMessage(botEntity, { message });
+    console.info(`Used /${message}`);
+    return true;
   } catch (error) {
     console.error(error);
     return false;
