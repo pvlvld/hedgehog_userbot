@@ -58,6 +58,7 @@ async function CreateClient(
   client.name = clientName;
 
   console.info(`Client ${client.name} created!`);
+  console.info(`Session: ${client.session.save()}`);
 
   return client;
 }
