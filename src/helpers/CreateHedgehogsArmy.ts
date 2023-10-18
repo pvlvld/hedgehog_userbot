@@ -8,6 +8,8 @@ type IHedgehogsArmy = {
 };
 
 async function CreateHedgehogsArmy() {
+  console.info('Creating hedgehogs army.');
+
   const clients = await getClients();
 
   const hedgehogsArmy: IHedgehogsArmy = {
@@ -23,6 +25,8 @@ async function CreateHedgehogsArmy() {
       startFarming(hedgehog);
     }
   };
+
+  console.info('Hedgehogs army was created!');
 
   return hedgehogsArmy;
 }
