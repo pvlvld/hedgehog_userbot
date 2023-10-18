@@ -6,7 +6,10 @@ const SENDING_COOLDOWN = 3333;
 
 let isCooldown = false;
 
-async function sendMessage(client: MyClient, message: string) {
+async function sendMessage(
+  client: MyClient,
+  message: string
+): Promise<boolean> {
   const botEntity = await getBotEntity(client);
 
   if (isCooldown) {
