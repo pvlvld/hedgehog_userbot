@@ -8,7 +8,7 @@ async function getHouseMessage(
   client: MyClient,
   attempt = 1
 ): Promise<Api.Message> {
-  console.info(`Getting house message. Attempt: ${attempt}...`);
+  console.info(`Getting house ${client.name} message. Attempt: ${attempt}...`);
 
   await sendMessage(client, '/house');
 
@@ -19,7 +19,7 @@ async function getHouseMessage(
   if (house.text !== '🇺🇦 Оберіть дію 👀')
     return getHouseMessage(client, attempt++);
 
-  console.info('House message successfully received!');
+  console.info(`${client.name} house message successfully received!`);
 
   return house;
 }
