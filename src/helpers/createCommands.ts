@@ -17,7 +17,7 @@ export type ICommands = Record<
   }
 >;
 
-const repeater = async (cb: ICallFn, cooldown: number) => {
+const repeater = async (cb: () => ReturnType<ICallFn>, cooldown: number) => {
   return setInterval(cb, (cooldown + 1) * 60 * 1000); // minutes + 1m to milliseconds
 };
 
