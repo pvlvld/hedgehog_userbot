@@ -7,6 +7,7 @@ const RAW_COMMANDS_ACTIONS = [
   ['training', 100],
   // ['atb', 1440],
   ['update_level', 1440],
+  ['garden', 1440],
 ] as const;
 // ['garden', 0],
 // ['my_garden', 0],
