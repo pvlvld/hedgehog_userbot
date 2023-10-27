@@ -5,7 +5,7 @@ const RAW_COMMANDS_ACTIONS = [
   ['adventures', 167],
   ['read', 300],
   ['training', 100],
-  ['atb', 1440],
+  // ['atb', 1440],
   ['park', 1440],
   ['update_level', 1440],
 ] as const;
